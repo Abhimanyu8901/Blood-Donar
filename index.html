@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blood Saathi – जरूरत पर साथ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #1c1c1c; --red: #cc0000; --red2: #e00000;
+      --white: #ffffff; --gray: #aaaaaa; --gray2: #d0d0d0;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: 'Roboto', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    /* NAVBAR */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 60px; background: var(--bg);
+      border-bottom: 1px solid #2a2a2a; position: sticky; top: 0; z-index: 999;
+    }
+    .logo img { 
+      height: 90px; 
+      width: auto; 
+      max-width: 150px;
+      display: block;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
+    .nav-links a {
+      color: var(--white); text-decoration: none; font-size: 15px;
+      font-weight: 400; letter-spacing: .3px; transition: color .2s; position: relative;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links .active::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--red); border-radius: 2px;
+    }
+    .btn-login {
+      background: var(--red); color: var(--white); padding: 11px 30px;
+      border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: background .2s, transform .15s; letter-spacing: .3px;
+    }
+    .btn-login:hover { background: var(--red2); transform: translateY(-1px); }
+
+    /* HERO */
+    .hero {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1180px; margin: 0 auto; padding: 70px 60px 90px;
+      gap: 50px; min-height: calc(100vh - 100px);
+    }
+    .hero-visual {
+      flex: 0 0 400px; display: flex; align-items: center; justify-content: center;
+      animation: fadeInLeft .9s ease both;
+    }
+    .hero-visual img {
+      width: 100%; max-width: 400px; height: auto;
+      animation: glowPulse 3.5s ease-in-out infinite;
+    }
+    .hero-content { flex: 1; text-align: right; animation: fadeInRight .9s .15s ease both; }
+    .hero-title { font-size: 58px; font-weight: 900; line-height: 1.08; letter-spacing: -1px; margin-bottom: 26px; }
+    .hero-title .red { color: var(--red); }
+    .hero-desc {
+      font-family: 'Poppins', sans-serif; font-size: 15px; color: var(--gray2);
+      line-height: 1.85; margin-bottom: 44px; margin-left: auto; max-width: 380px;
+    }
+    .btn-donate {
+      display: inline-block; border: 1.5px solid var(--white); color: var(--white);
+      padding: 13px 44px; border-radius: 6px; font-size: 16px; font-weight: 500;
+      font-family: 'Roboto', sans-serif; text-decoration: none; letter-spacing: .4px;
+      transition: background .22s, border-color .22s, transform .15s;
+    }
+    .btn-donate:hover { background: var(--red); border-color: var(--red); transform: translateY(-2px); }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, #444, transparent); margin: 0 60px; }
+
+    @keyframes fadeInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 30px rgba(204,0,0,0.2)); }
+      50%       { filter: drop-shadow(0 0 60px rgba(204,0,0,0.5)); }
+    }
+
+    @media (max-width: 900px) {
+      .logo img { height: 164px; max-width: 110px; }
+      nav { padding: 16px 24px; }
+      .nav-links { gap: 20px; }
+      .hero { flex-direction: column; padding: 50px 24px 60px; text-align: center; min-height: unset; }
+      .hero-visual { flex: unset; width: 280px; }
+      .hero-content { text-align: center; }
+      .hero-desc { margin: 0 auto 32px; }
+      .hero-title { font-size: 38px; }
+      .divider { margin: 0 24px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .hero-title { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="./" class="logo">
+    <img src="Blood_Saathi.png" alt="Blood Saathi Logo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="#" class="active">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="#">Find Blood</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+  <a href="login.html" class="btn-login">Log In</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-visual">
+    <img src="heart_logo.png" alt="Blood Donation Heart" />
+  </div>
+  <div class="hero-content">
+    <h1 class="hero-title">
+      Save <span class="red">Life</span> Donate<br>
+      <span class="red">Blood</span>
+    </h1>
+    <p class="hero-desc">
+      Donate blood and be a hero – your generosity can save lives.<br>
+      Join a proud tradition that has made a difference for centuries.<br>
+      Make an impact today with a simple, lifesaving act
+    </p>
+    <a href="#" class="btn-donate">Donate Now</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+</body>
+</html> 

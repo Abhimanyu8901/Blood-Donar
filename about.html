@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us - Blood Saathi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&family=Poppins:wght@400;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #1c1c1c; --red: #cc0000; --red2: #e00000;
+      --white: #ffffff; --gray: #aaaaaa; --gray2: #d0d0d0;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--white); font-family: 'Roboto', sans-serif; min-height: 100vh; overflow-x: hidden; }
+
+    /* NAVBAR */
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 60px; background: var(--bg);
+      border-bottom: 1px solid #2a2a2a; position: sticky; top: 0; z-index: 999;
+    }
+    .logo img { 
+      height: 90px; 
+      width: auto; 
+      max-width: 150px;
+      display: block;
+      object-fit: contain;
+      image-rendering: -webkit-optimize-contrast;
+    }
+    .nav-links { display: flex; align-items: center; gap: 38px; list-style: none; }
+    .nav-links a {
+      color: var(--white); text-decoration: none; font-size: 15px;
+      font-weight: 400; letter-spacing: .3px; transition: color .2s; position: relative;
+    }
+    .nav-links a:hover { color: var(--red); }
+    .nav-links .active::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--red); border-radius: 2px;
+    }
+    .btn-login {
+      background: var(--red); color: var(--white); padding: 11px 30px;
+      border-radius: 6px; font-size: 15px; font-weight: 600; text-decoration: none;
+      transition: background .2s, transform .15s; letter-spacing: .3px;
+    }
+    .btn-login:hover { background: var(--red2); transform: translateY(-1px); }
+
+    /* ABOUT HERO */
+    .about-hero {
+      display: flex; align-items: center; justify-content: space-between;
+      max-width: 1180px; margin: 0 auto; padding: 120px 60px;
+      gap: 50px; text-align: right;
+    }
+    .about-hero-text { flex: 1; }
+    .about-hero-title { 
+      font-size: 58px; font-weight: 900; line-height: 1.08; 
+      margin-bottom: 26px; letter-spacing: -1px;
+    }
+    .about-hero-title .red { color: var(--red); }
+    .about-hero-desc {
+      font-family: 'Poppins', sans-serif; font-size: 18px; color: var(--gray2);
+      line-height: 1.7; margin-bottom: 40px; max-width: 500px;
+    }
+    .about-visual {
+      flex: 0 0 380px; text-align: center;
+    }
+    .about-visual img {
+      width: 100%; max-width: 380px; height: auto; border-radius: 12px;
+      box-shadow: 0 20px 60px rgba(204,0,0,0.15);
+    }
+
+    /* SECTIONS */
+    .section {
+      max-width: 1180px; margin: 0 auto; padding: 90px 60px;
+    }
+    .section-title {
+      font-size: 42px; font-weight: 900; text-align: center;
+      margin-bottom: 60px; letter-spacing: -0.5px;
+    }
+    .section-title .red { color: var(--red); }
+    .mission-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 40px; margin-bottom: 20px;
+    }
+    .mission-item {
+      background: rgba(255,255,255,0.03); padding: 32px;
+      border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);
+      text-align: center; transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .mission-item:hover {
+      transform: translateY(-8px); box-shadow: 0 20px 40px rgba(204,0,0,0.1);
+    }
+    .mission-icon { font-size: 48px; color: var(--red); margin-bottom: 18px; }
+    .mission-item h3 { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px; text-align: center;
+    }
+    .stat { }
+    .stat-number {
+      font-size: 56px; font-weight: 900; color: var(--red);
+      display: block; line-height: 1;
+    }
+    .stat-label { font-size: 16px; color: var(--gray2); margin-top: 8px; font-family: 'Poppins', sans-serif; }
+
+    .cta {
+      text-align: center; padding: 80px 60px; background: linear-gradient(135deg, rgba(204,0,0,0.1), transparent);
+      border: 1px solid rgba(204,0,0,0.2);
+    }
+    .cta-title {
+      font-size: 36px; font-weight: 900; margin-bottom: 20px;
+    }
+    .cta-title .red { color: var(--red); }
+    .cta-desc { font-size: 18px; color: var(--gray2); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+    .divider { height: 1px; background: linear-gradient(to right, transparent, #444, transparent); margin: 0 60px; }
+
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+    .about-hero-text { animation: fadeInUp 0.9s ease both; }
+    .about-visual { animation: fadeInUp 0.9s 0.2s ease both; }
+    .mission-item:nth-child(1) { animation: fadeInUp 0.9s 0.4s both; }
+    .mission-item:nth-child(2) { animation: fadeInUp 0.9s 0.5s both; }
+    .mission-item:nth-child(3) { animation: fadeInUp 0.9s 0.6s both; }
+
+    @media (max-width: 900px) {
+      nav, .about-hero, .section, .cta { padding-left: 24px; padding-right: 24px; }
+      .logo img { height: 70px; max-width: 130px; }
+      .about-hero { flex-direction: column; text-align: center; padding-top: 80px; padding-bottom: 80px; }
+      .about-hero-title { font-size: 42px; }
+      .section-title { font-size: 32px; }
+      .about-visual { max-width: 300px; }
+      .divider { margin: 0 24px; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .about-hero-title { font-size: 32px; }
+      .section-title { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="./" class="logo">
+    <img src="Blood_Saathi.png" alt="Blood Saathi Logo" />
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="#">Find Blood</a></li>
+    <li><a href="contact.html">Contact Us</a></li>
+  </ul>
+  <a href="login.html" class="btn-login">Log In</a>
+</nav>
+
+<section class="about-hero">
+  <div class="about-hero-text">
+    <h1 class="about-hero-title">
+      About <span class="red">Blood Saathi</span>
+    </h1>
+    <p class="about-hero-desc">
+      Blood Saathi is a dedicated platform connecting blood donors with those in need. 
+      With the motto "जरूरत पर साथ" (Companion in Time of Need), we bridge the gap 
+      between life-saving donations and urgent requirements across communities.
+    </p>
+  </div>
+  <div class="about-visual">
+    <img src="heart_logo.png" alt="Blood Donation Mission" />
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <h2 class="section-title">Our Mission</h2>
+  <div class="mission-grid">
+    <div class="mission-item">
+      <div class="mission-icon">❤️</div>
+      <h3>Save Lives</h3>
+      <p>Every donation saves up to 3 lives. We make it easy to give blood and find donors.</p>
+    </div>
+    <div class="mission-item">
+      <div class="mission-icon">🌐</div>
+      <h3>Connect Communities</h3>
+      <p>Building a network of donors, hospitals, and patients for faster, reliable blood access.</p>
+    </div>
+    <div class="mission-item">
+      <div class="mission-icon">📈</div>
+      <h3>Increase Awareness</h3>
+      <p>Educating on blood donation benefits, myths, and the critical need for regular donors.</p>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section">
+  <h2 class="section-title">Our Impact</h2>
+  <div class="stats-grid">
+    <div class="stat">
+      <span class="stat-number">500+</span>
+      <span class="stat-label">Lives Saved</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">2K+</span>
+      <span class="stat-label">Active Donors</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">100+</span>
+      <span class="stat-label">Camps Organized</span>
+    </div>
+    <div class="stat">
+      <span class="stat-number">24/7</span>
+      <span class="stat-label">Availability</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="cta">
+  <h2 class="cta-title">Ready to Make a Difference?</h2>
+  <p class="cta-desc">
+    Join thousands of donors who have already saved lives. 
+    Your blood can be someone's miracle tomorrow.
+  </p>
+  <a href="index.html" class="btn-donate" style="
+    display: inline-block; border: 1.5px solid var(--white); color: var(--white);
+    padding: 15px 50px; border-radius: 6px; font-size: 18px; font-weight: 600;
+    text-decoration: none; letter-spacing: .5px; transition: all .3s;
+    background: transparent;
+  ">Become a Donor Today</a>
+</section>
+
+</body>
+</html> 
