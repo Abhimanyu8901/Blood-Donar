@@ -1,3 +1,3 @@
 # Website
 
-Link -- "https//blooddonation.freepage.cc"
+Link -- "https://blooddonation.freepage.cc"
